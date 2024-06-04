@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: pixkey
+  datasource:
+    url: ${DB_URL}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
