@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -16,13 +17,13 @@ public class AccountService implements AccountGateway {
     private final AccountRepository accountRepository;
 
     @Override
-    public Account insert(Account account) {
+    public Account insert(final Account account) {
         return accountRepository.save(account);
     }
 
     @Override
-    public Optional<Account> search(final AccountType accountType, final Integer agency, final Integer accountNumber) {
-        return accountRepository.findByAccountTypeAndAgencyAndAccountNumber(accountType, agency, accountNumber);
+    public Optional<Account> searchCheckingAccountById(final AccountType accountType, final UUID accountId) {
+        return accountRepository.findByAccountTypeAndId(accountType, accountId);
     }
 
     @Override

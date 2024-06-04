@@ -10,6 +10,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import static com.itau.pixkey.core.domain.Status.ACTIVE;
+import static com.itau.pixkey.core.domain.Status.INACTIVE;
 
 @Entity
 @Getter
@@ -39,6 +40,8 @@ public class PixKey {
     @Column(nullable = false)
     private OffsetDateTime updateDate;
 
+    private OffsetDateTime inactivationDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Account account;
@@ -46,6 +49,11 @@ public class PixKey {
     public void connectAccount(Account account) {
         this.account = account;
         status = ACTIVE;
+    }
+
+    public void inactivate() {
+        status = INACTIVE;
+        inactivationDate = OffsetDateTime.now();
     }
 
 }

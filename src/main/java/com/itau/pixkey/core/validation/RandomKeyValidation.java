@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RandomKeyValidation implements PixKeyValidation {
 
+    //TODO faz a regra máxima de caracteres ser dinamica, definida por variavel de ambiente?
     @Override
     public Boolean validate(String keyValue, ConstraintValidatorContext constraintValidatorContext) {
         var characterLimit = 36;

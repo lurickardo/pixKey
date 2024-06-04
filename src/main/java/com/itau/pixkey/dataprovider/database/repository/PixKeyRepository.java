@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface PixKeyRepository extends JpaRepository<PixKey, UUID> {
+public interface PixKeyRepository extends JpaRepository<PixKey, UUID>, PixKeyQueries {
 
     Boolean existsByKeyValueAndKeyType(String keyValue, KeyType keyType);
 

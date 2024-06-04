@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface AccountRepository extends JpaRepository<Account, UUID> {
 
-    Optional<Account> findByAccountTypeAndAgencyAndAccountNumber(AccountType accountType, Integer agency, Integer accountNumber);
+    Optional<Account> findByAccountTypeAndId(AccountType accountType, UUID id);
     Boolean existsByAgencyAndAccountNumber(Integer agency, Integer accountNumber);
 
 }

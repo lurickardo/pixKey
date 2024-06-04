@@ -2,10 +2,13 @@ package com.itau.pixkey.core.usecase;
 
 import com.itau.pixkey.core.domain.*;
 import com.itau.pixkey.core.exception.AccountWithThisCheckingNotFoundException;
+import com.itau.pixkey.core.exception.EntityNotFoundException;
 import com.itau.pixkey.core.exception.ExistsAccountException;
 import com.itau.pixkey.core.gateway.AccountGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 import static com.itau.pixkey.core.domain.AccountType.CHECKING;
 
@@ -27,8 +30,8 @@ public class AccountUseCase {
         return accountGateway.insert(account);
     }
 
-    public Account searchCheckingAccount(final Integer agency, final Integer accountNumber) {
-        return accountGateway.search(CHECKING, agency, accountNumber).orElseThrow(() -> new AccountWithThisCheckingNotFoundException(agency, accountNumber));
+    public Account searchCheckingAccountById(final UUID accountId) {
+        return accountGateway.searchCheckingAccountById(CHECKING, accountId).orElseThrow(() -> new AccountWithThisCheckingNotFoundException(accountId));
     }
 
 }

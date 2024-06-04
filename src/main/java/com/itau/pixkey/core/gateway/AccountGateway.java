@@ -4,11 +4,11 @@ import com.itau.pixkey.core.domain.Account;
 import com.itau.pixkey.core.domain.AccountType;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public interface AccountGateway {
 
-    Account insert(Account account);
-    Optional<Account> search(final AccountType accountType, final Integer agency, final Integer accountNumber);
+    Account insert(final Account account);
+    Optional<Account> searchCheckingAccountById(final AccountType accountType, final UUID accountId);
     Boolean exists(final Integer agency, final Integer accountNumber);
-
 }
